@@ -24,8 +24,10 @@ public class PlayerController : MonoBehaviour {
     public Text bulletText; //残り銃弾数
     public Text virusText; //ウイルス度テキスト
 
-	// Use this for initialization
-	void Start () {
+    SoundController sound;//音声コントローラ
+
+    // Use this for initialization
+    void Start () {
         //初期化
         playerHp = playerHpMax;
         bulletNumMax = BulletScript.bulletNumMax;
@@ -33,6 +35,8 @@ public class PlayerController : MonoBehaviour {
         reloadGauge.enabled = false;
         reloadText.enabled = false;
         isInvincible = false;
+        //音声コントローラを取得
+        sound = GetComponent<SoundController>();
     }
 	
 	// Update is called once per frame
@@ -159,6 +163,7 @@ public class PlayerController : MonoBehaviour {
             virusPercentage -= 10;
             playerHp = Mathf.Clamp(playerHp, 0, playerHpMax);
             virusPercentage = Mathf.Clamp(virusPercentage, 0, 100);
+            sound.PlaySE(transform.position, 3);
         }
     }
 }

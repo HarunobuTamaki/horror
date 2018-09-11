@@ -12,6 +12,7 @@ public class IllustZombieController : EnemyScript {
 	// Use this for initialization
 	public override void Start () {
         base.Start();
+        typeCode = 0;
 	}
 
     // Update is called once per frame

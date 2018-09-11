@@ -13,12 +13,18 @@ public abstract class EnemyScript : MonoBehaviour {
     public GameObject target; //PlayerTargetオブジェクト
     public GameObject Vaccine; //ワクチン
 
+    protected int typeCode;//敵キャラの種別(0:男ゾンビ, 1:女ゾンビ, 2:小グモ, 3:大グモ)
+
+    SoundController Sound;//音声コントローラ
+
 	// Use this for initialization
 	public virtual void Start () {
         //初期値を体力最大値に設定する
         enemyHp = enemyHpMax;
         //PlayerTargetオブジェクトを指定する
         target = GameObject.Find("PlayerTarget");
+        //音声コントローラを指定する
+        Sound = GameObject.Find("Player").GetComponent<SoundController>();
 	}
 	
 	// Update is called once per frame
@@ -54,9 +60,36 @@ public abstract class EnemyScript : MonoBehaviour {
         //EnemyのHPが0になった場合、オブジェクトが破棄されてワクチンを生成する
         if (enemyHp <= 0)
         {
-            Instantiate(Vaccine, itemPosition, transform.rotation);
-            AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position);
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    public void Die()
+    {
+        //やられ音声を再生
+        switch (typeCode)
+        {
+            //男ゾンビ死亡時
+            case 0:
+                Sound.PlaySE(transform.position,8);
+                break;
+            //女ゾンビ死亡時
+            case 1:
+                goto case 0;
+
+            //小グモ死亡時
+            case 2:
+                Sound.PlaySE(transform.position, 9);
+                break;
+
+            //大グモ死亡時
+            case 3:
+                Sound.PlaySE(transform.position, 10);
+                break;
+        }
+
+        //ワクチンを生成してオブジェクトを破棄
+        Instantiate(Vaccine, itemPosition, transform.rotation);
+        Destroy(gameObject);
     }
 }
