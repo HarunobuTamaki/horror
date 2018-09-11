@@ -28,15 +28,6 @@ public abstract class EnemyScript : MonoBehaviour {
 
         //EnemyとPlayerの距離
         distance = Vector3.Distance(target.transform.position, transform.position);
-        
-        //EnemyのHPが0になるとオブジェクトが破棄されてワクチンを生成する
-        if (enemyHp <= 0)
-        {
-            Destroy(gameObject);
-            Instantiate(Vaccine, itemPosition, transform.rotation);
-            GetComponent<AudioSource>().Play();
-        }
-        
     }
 
     public virtual void Attack()
@@ -49,8 +40,23 @@ public abstract class EnemyScript : MonoBehaviour {
         //弾に当たった場合ダメージをくらう
         if(collision.gameObject.tag == "Bullet")
         {
-            enemyHp -= damage;
-            enemyHp = Mathf.Clamp(enemyHp,0,enemyHpMax);
+            Damage(damage);
+        }
+
+    }
+
+    public void Damage(int damage)//被ダメージ時の処理
+    {
+        //引数で渡された分のダメージをHpから引く
+        enemyHp -= damage;
+        enemyHp = Mathf.Clamp(enemyHp, 0, enemyHpMax);
+
+        //EnemyのHPが0になった場合、オブジェクトが破棄されてワクチンを生成する
+        if (enemyHp <= 0)
+        {
+            Instantiate(Vaccine, itemPosition, transform.rotation);
+            AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position);
+            Destroy(gameObject);
         }
     }
 }
