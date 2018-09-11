@@ -4,17 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class CheckPointTrigger : MonoBehaviour {
-
-    protected bool isCheck; //チェックポイント判定
+    
     protected float distance; //Playerとチェックポイントの距離
 
-    public GameObject target; //Playerの子オブジェクトPlayerTarget
-    public GameObject nextCheck; //次のチェックポイント
-    public Text distanceText; //チェックポイントとの距離を表示
+    protected GameObject target; //Playerの子オブジェクトPlayerTarget
+    protected GameObject distanceText; //チェックポイントとの距離を表示
 
     // Use this for initialization
     protected virtual void Start () {
-        isCheck = true;
+        distanceText = GameObject.Find("Distance");
+        target = GameObject.Find("PlayerTarget");
 	}
 	
 	// Update is called once per frame
@@ -32,13 +31,6 @@ public abstract class CheckPointTrigger : MonoBehaviour {
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (isCheck)
-        {
-            if (other.gameObject.tag == "Player")
-            {
-                nextCheck.SetActive(true);
-                gameObject.SetActive(false);
-            }
-        }
+
     }
 }

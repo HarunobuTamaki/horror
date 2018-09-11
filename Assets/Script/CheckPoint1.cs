@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class CheckPoint1 : CheckPointTrigger {
 
+    public GameObject nextCheck; //次のチェックポイント
+
     // Use this for initialization
-     protected override void Start () {
+    protected override void Start() {
         base.Start();
-	}
-	
-	// Update is called once per frame
-	protected override void Update () {
+    }
+
+    // Update is called once per frame
+    protected override void Update() {
         base.Update();
-	}
+    }
 
     protected override void OnTriggerEnter(Collider other)
     {
-        base.OnTriggerEnter(other);
+        if (other.gameObject.tag == "Player")
+        {
+            nextCheck.SetActive(true);
+            Destroy(gameObject);
+        }
     }
 }
