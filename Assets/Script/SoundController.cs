@@ -7,7 +7,7 @@ public class SoundController : MonoBehaviour {
     public AudioSource BGMChannel; //BGM再生用のAudioSource
     public AudioSource SEChannel;//SE再生用のAudioSource
     public AudioClip[] Musics;//BGMの格納用配列
-    public AudioClip[] Sounds;//SEの格納用配列。ゲーム中で使用するSEは全てここに入れる
+    public AudioClip[] Sounds;//SEの格納用配列。Player、UI側で使用するSEは全てここに入れる
 
     // Use this for initialization
     void Start () {
