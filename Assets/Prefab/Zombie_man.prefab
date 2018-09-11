@@ -205,7 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0adaf6e6ef3dd8448bcfdb67a51a464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHp: 0
   enemyHpMax: 30
   damage: 10
   distance: 0

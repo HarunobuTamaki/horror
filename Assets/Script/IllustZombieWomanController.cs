@@ -7,7 +7,8 @@ public class IllustZombieWomanController : EnemyScript {
 	// Use this for initialization
 	public override void Start () {
         base.Start();
-	}
+        typeCode = 1;
+    }
 	
 	// Update is called once per frame
 	public override void Update () {
