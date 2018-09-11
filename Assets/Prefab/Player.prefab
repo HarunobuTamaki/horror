@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 108554118227840790}
   - component: {fileID: 114446585162857344}
   - component: {fileID: 114938182687392598}
+  - component: {fileID: 114249467654298552}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -198,6 +199,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -376,6 +378,35 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114249467654298552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1612758388650020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74fe73daefd0bf74992f3a53cf460ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Musics:
+  - {fileID: 8300000, guid: f174b9489a636fa45b1d8382ff3d9ca7, type: 3}
+  - {fileID: 8300000, guid: f174b9489a636fa45b1d8382ff3d9ca7, type: 3}
+  - {fileID: 8300000, guid: f174b9489a636fa45b1d8382ff3d9ca7, type: 3}
+  - {fileID: 8300000, guid: f174b9489a636fa45b1d8382ff3d9ca7, type: 3}
+  - {fileID: 8300000, guid: f174b9489a636fa45b1d8382ff3d9ca7, type: 3}
+  Sounds:
+  - {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
+  - {fileID: 8300000, guid: e9714160ce34f2b4ab63ff8c27bd68e1, type: 3}
+  - {fileID: 8300000, guid: bcdde814857256b4a8600398c89ee1e7, type: 3}
+  - {fileID: 8300000, guid: bcdde814857256b4a8600398c89ee1e7, type: 3}
+  - {fileID: 8300000, guid: bcdde814857256b4a8600398c89ee1e7, type: 3}
+  - {fileID: 8300000, guid: bcdde814857256b4a8600398c89ee1e7, type: 3}
+  - {fileID: 8300000, guid: bcdde814857256b4a8600398c89ee1e7, type: 3}
+  - {fileID: 8300000, guid: bcdde814857256b4a8600398c89ee1e7, type: 3}
+  - {fileID: 8300000, guid: 8b3a1a7baf89e4aa7ab0c775f81dc00b, type: 3}
+  - {fileID: 8300000, guid: 8a378e68568524190bd7f80a5c77f1b6, type: 3}
+  - {fileID: 8300000, guid: f775dc10833c9483dbd387fad3281e8e, type: 3}
 --- !u!114 &114417622451678046
 MonoBehaviour:
   m_ObjectHideFlags: 1
