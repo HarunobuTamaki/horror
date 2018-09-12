@@ -10,7 +10,7 @@ public class LittleSpiderController : EnemyScript {
 	       // Use this for initialization
 	public override void  Start () {
         base.Start();
-        typeCode = 2;
+        enemyCode = "littleSpider";
     }
 	
 	// Update is called once per frame
@@ -24,6 +24,7 @@ public class LittleSpiderController : EnemyScript {
             //2.5秒間隔で射撃
             if (spanTimer > 2.5f)
             {
+                howl(enemyCode);//おたけび再生
                 Instantiate(spiderBullet, transform.position, transform.rotation);
                 spanTimer = 0;
             }

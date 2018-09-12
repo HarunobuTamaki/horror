@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour {
         //マウス左クリックで射撃
         if (Input.GetMouseButtonDown(0) && bulletNum>0)
         {
+            sound.PlaySE(transform.position, "fire");
             Instantiate(bullet, muzzle.transform.position, muzzle.transform.rotation);
             bulletNum--;
 
@@ -132,6 +133,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (collision.gameObject.tag == "Enemy")
             {
+                sound.PlaySE(transform.position,"die");
                 playerHp -= damage;
                 playerHp = Mathf.Clamp(playerHp, 0, playerHpMax);
                 virusPercentage += 2;
@@ -141,6 +143,7 @@ public class PlayerController : MonoBehaviour {
 
             if (collision.gameObject.tag == "EnemyBullet" || collision.gameObject.tag == "SpiderBullet")
             {
+                sound.PlaySE(transform.position, "die");
                 playerHp -= damage;
                 playerHp = Mathf.Clamp(playerHp, 0, playerHpMax);
                 virusPercentage += 5;
@@ -163,7 +166,7 @@ public class PlayerController : MonoBehaviour {
             virusPercentage -= 10;
             playerHp = Mathf.Clamp(playerHp, 0, playerHpMax);
             virusPercentage = Mathf.Clamp(virusPercentage, 0, 100);
-            sound.PlaySE(transform.position, 3);
+            sound.PlaySE(transform.position, "getItem");
         }
     }
 }
