@@ -66,6 +66,11 @@ public class PlayerController : MonoBehaviour {
         //弾数がなくなるかリロードボタンを押したらリロード
         if (bulletNum <= 0)
         {
+            //リロード開始時に一度だけリロード音再生
+            if (!reloadText.enabled)
+            {
+                sound.PlaySE(transform.position, "reload");
+            }
             //ゲージとテキストを表示
             reloadGauge.enabled= true;
             reloadText.enabled= true;
@@ -80,6 +85,9 @@ public class PlayerController : MonoBehaviour {
             //2秒経つとリロード終了
             if (reloadTimer > 2.0f)
             {
+                //リロード完了音再生
+                sound.PlaySE(transform.position, "reloadOver");
+                //リロード処理
                 bulletNum = bulletNumMax;
                 reloadTimer = 0;
                 reloadText.enabled = false;
