@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour {
         isInvincible = false;
         //音声コントローラを取得
         sound = GetComponent<SoundController>();
+        sound.PlayBGM("stage");
     }
 	
 	// Update is called once per frame
@@ -65,6 +66,11 @@ public class PlayerController : MonoBehaviour {
         //弾数がなくなるかリロードボタンを押したらリロード
         if (bulletNum <= 0)
         {
+            //リロード開始時に一度だけリロード音再生
+            if (!reloadText.enabled)
+            {
+                sound.PlaySE(transform.position, "reload");
+            }
             //ゲージとテキストを表示
             reloadGauge.enabled= true;
             reloadText.enabled= true;
@@ -79,6 +85,9 @@ public class PlayerController : MonoBehaviour {
             //2秒経つとリロード終了
             if (reloadTimer > 2.0f)
             {
+                //リロード完了音再生
+                sound.PlaySE(transform.position, "reloadOver");
+                //リロード処理
                 bulletNum = bulletNumMax;
                 reloadTimer = 0;
                 reloadText.enabled = false;
@@ -96,6 +105,9 @@ public class PlayerController : MonoBehaviour {
             string.Format("{0}/{1}", bulletNum, bulletNumMax);
         virusText.GetComponent<Text>().text =
             string.Format("{0}%",virusPercentage);
+
+
+      
     }
 
     //無敵時間中の処理

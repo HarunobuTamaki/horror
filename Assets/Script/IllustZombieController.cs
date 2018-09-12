@@ -21,7 +21,11 @@ public class IllustZombieController : EnemyScript {
         //画像を表示させているのでDistanceの値によって疑似的に見えにくくする(透明度1だと明るい)
         Color distanceColor = new Color(
             255, 255, 255, distanceAlpha / distance);
-        Attack();
+        //死んでいなければ攻撃
+        if (!isDead)
+        {
+            Attack();
+        }
         gameObject.GetComponent<SpriteRenderer>().color = distanceColor;
     }
 

@@ -19,7 +19,11 @@ public class IllustZombieWomanController : EnemyScript {
         //距離によって透明度を変更する
         Color distanceColor = new Color
             (1, 1, 1, 4.0f / distance);
-        Attack();
+        //死んでいなければ攻撃
+        if (!isDead)
+        {
+            Attack();
+        }
         gameObject.GetComponent<SpriteRenderer>().color = distanceColor;
     }
 

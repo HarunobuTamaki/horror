@@ -26,18 +26,25 @@ public enum SEList//SEはこの列挙型で指定する
     dieingLittleSpider, //9：クモ死亡時
     dieingBigSpider,    //10：大グモ死亡時
     hitEnemy,           //11：プレイヤーの攻撃ヒット時
+    counter,            //12：敵弾相殺時
+    deside,             //13：決定音
+    cancel,             //14：キャンセル音
+    select,             //15：カーソル移動音
+    reload,             //16：リロード開始音
+    reloadOver,         //17：リロード完了音
 }
 
 public class SoundController : MonoBehaviour {
     AudioSource BGMChannel;//BGM再生用AudioSource
     public AudioClip[] Musics = new AudioClip[5];//BGMの格納用配列
-    public AudioClip[] Sounds = new AudioClip[12];//SEの格納用配列。使用するSEは全てここに入れる
+    public AudioClip[] Sounds = new AudioClip[16];//SEの格納用配列。使用するSEは全てここに入れる
 
     // Use this for initialization
     void Start ()
     {
         //AudioSource格納用変数にMainCameraが持つAudioSourceを取得
         BGMChannel = GameObject.Find("MainCamera").GetComponent<AudioSource>();
+        Debug.Log(BGMChannel);
 	}
 	
 	// Update is called once per frame
@@ -49,7 +56,7 @@ public class SoundController : MonoBehaviour {
     //BGM再生(MainCameraが持つAudioSourceから第2引数のBGMを再生)
     public void PlayBGM(string index)
     {
-        int code = (int)Enum.Parse(typeof(SEList), index);
+        int code = (int)Enum.Parse(typeof(BGMList), index);
         BGMChannel.clip = Musics[code];
         BGMChannel.Play();
     }
