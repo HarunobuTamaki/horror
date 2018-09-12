@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour {
         isInvincible = false;
         //音声コントローラを取得
         sound = GetComponent<SoundController>();
+        sound.PlayBGM("title");
     }
 	
 	// Update is called once per frame
@@ -96,6 +97,9 @@ public class PlayerController : MonoBehaviour {
             string.Format("{0}/{1}", bulletNum, bulletNumMax);
         virusText.GetComponent<Text>().text =
             string.Format("{0}%",virusPercentage);
+
+
+      
     }
 
     //無敵時間中の処理
