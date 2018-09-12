@@ -19,12 +19,15 @@ public class Goal : CheckPointTrigger {
         if (isGoal)
         {
             distanceText.SetActive(false);
+            Destroy(gameObject);
         }
 	}
 
     protected override void OnTriggerEnter(Collider other)
     {
-        base.OnTriggerEnter(other);
-        isGoal = true;
+        if (other.gameObject.tag == "Player")
+            isGoal = true;
+            
+        
     }
 }
