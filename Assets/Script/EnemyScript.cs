@@ -9,15 +9,18 @@ public abstract class EnemyScript : MonoBehaviour {
     public int enemyHpMax=50; //enemyの体力最大値
     public int damage=10; //enemyがくらうダメージ量
     public float distance = 0; //PlayerとEnemyの距離
+    public float deathDelay = 0;//死亡時ディレイ(死んでから消滅するまでの待機時間)
     public string enemyCode = "zombie_man";//敵キャラクターの種別
     Vector3 itemPosition; //アイテムの表示位置
+
+    public bool isDead;//死亡判別フラグ
 
     public GameObject target; //PlayerTargetオブジェクト
     public GameObject Vaccine; //ワクチン
 
     protected enum EnemyType { zombie_man, zombie_woman, littleSpider, bigSpider};//敵キャラの種別
 
-    SoundController sound;//音声コントローラ
+    protected SoundController sound;//音声コントローラ
 
 	// Use this for initialization
 	public virtual void Start () {
@@ -44,13 +47,16 @@ public abstract class EnemyScript : MonoBehaviour {
 
     public virtual void OnCollisionEnter(Collision collision)
     {
-        //弾に当たった場合ダメージをくらう
-        if(collision.gameObject.tag == "Bullet")
+        //死んでいない場合のみ実行
+        if (!isDead)
         {
-            sound.PlaySE(transform.position, "hitEnemy");
-            Damage(damage);
+            //弾に当たった場合ダメージをくらう
+            if (collision.gameObject.tag == "Bullet")
+            {
+                sound.PlaySE(transform.position, "hitEnemy");
+                Damage(damage);
+            }
         }
-
     }
 
     public void Damage(int damage)//被ダメージ時の処理
@@ -121,6 +127,15 @@ public abstract class EnemyScript : MonoBehaviour {
         }
 
         //ワクチンを生成してオブジェクトを破棄
+        StartCoroutine(Zanshin(deathDelay));
+    }
+    //死亡時ディレイ秒後にワクチン生成・オブジェクトを消滅させるコルーチン
+    IEnumerator Zanshin(float second)
+    {
+        //死亡判別フラグをオン
+        isDead = true;
+        //待機・ワクチン生成・消滅処理
+        yield return new WaitForSeconds(second);
         Instantiate(Vaccine, itemPosition, transform.rotation);
         Destroy(gameObject);
     }
