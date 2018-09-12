@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,14 +9,15 @@ public abstract class EnemyScript : MonoBehaviour {
     public int enemyHpMax=50; //enemyの体力最大値
     public int damage=10; //enemyがくらうダメージ量
     public float distance = 0; //PlayerとEnemyの距離
+    public string enemyCode = "zombie_man";//敵キャラクターの種別
     Vector3 itemPosition; //アイテムの表示位置
 
     public GameObject target; //PlayerTargetオブジェクト
     public GameObject Vaccine; //ワクチン
 
-    protected int typeCode;//敵キャラの種別(0:男ゾンビ, 1:女ゾンビ, 2:小グモ, 3:大グモ)
+    protected enum EnemyType { zombie_man, zombie_woman, littleSpider, bigSpider};//敵キャラの種別
 
-    SoundController Sound;//音声コントローラ
+    SoundController sound;//音声コントローラ
 
 	// Use this for initialization
 	public virtual void Start () {
@@ -24,7 +26,7 @@ public abstract class EnemyScript : MonoBehaviour {
         //PlayerTargetオブジェクトを指定する
         target = GameObject.Find("PlayerTarget");
         //音声コントローラを指定する
-        Sound = GameObject.Find("Player").GetComponent<SoundController>();
+        sound = GameObject.Find("Player").GetComponent<SoundController>();
 	}
 	
 	// Update is called once per frame
@@ -38,7 +40,6 @@ public abstract class EnemyScript : MonoBehaviour {
 
     public virtual void Attack()
     {
-
     }
 
     public virtual void OnCollisionEnter(Collision collision)
@@ -46,6 +47,7 @@ public abstract class EnemyScript : MonoBehaviour {
         //弾に当たった場合ダメージをくらう
         if(collision.gameObject.tag == "Bullet")
         {
+            sound.PlaySE(transform.position, "hitEnemy");
             Damage(damage);
         }
 
@@ -60,18 +62,48 @@ public abstract class EnemyScript : MonoBehaviour {
         //EnemyのHPが0になった場合、オブジェクトが破棄されてワクチンを生成する
         if (enemyHp <= 0)
         {
-            Die();
+            Die(enemyCode);
         }
     }
 
-    public void Die()
+    public void howl(string code)//攻撃時のおたけび
     {
+        int type = (int)Enum.Parse(typeof(EnemyType), code);//敵タイプをintに変換
+
+        //攻撃音声を再生
+        switch (type)
+        {
+            //男ゾンビ攻撃時
+            case 0:
+                sound.PlaySE(transform.position, "attackZombie_man");
+                break;
+            //女ゾンビ攻撃時
+            case 1:
+                sound.PlaySE(transform.position, "attackZombie_woman");
+                break;
+
+            //小グモ攻撃時
+            case 2:
+                sound.PlaySE(transform.position, "attackLittleSpider");
+                break;
+
+            //大グモ攻撃時
+            case 3:
+                sound.PlaySE(transform.position, "attackBigSpider");
+                break;
+        }
+    }
+
+    public void Die(string code)
+    {
+        int type = (int)Enum.Parse(typeof(EnemyType), code);
+
         //やられ音声を再生
-        switch (typeCode)
+        switch (type)
         {
             //男ゾンビ死亡時
             case 0:
-                Sound.PlaySE(transform.position,8);
+                sound.PlaySE(transform.position,"dieingZombie");
                 break;
             //女ゾンビ死亡時
             case 1:
@@ -79,12 +111,12 @@ public abstract class EnemyScript : MonoBehaviour {
 
             //小グモ死亡時
             case 2:
-                Sound.PlaySE(transform.position, 9);
+                sound.PlaySE(transform.position, "dieingLittleSpider");
                 break;
 
             //大グモ死亡時
             case 3:
-                Sound.PlaySE(transform.position, 10);
+                sound.PlaySE(transform.position, "dieingBigSpider");
                 break;
         }
 

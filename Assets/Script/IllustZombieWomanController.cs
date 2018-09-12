@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class IllustZombieWomanController : EnemyScript {
 
-	// Use this for initialization
-	public override void Start () {
+    float spanTimer = 0; //鳴き声を上げる間隔
+
+    // Use this for initialization
+    public override void Start () {
         base.Start();
-        typeCode = 1;
+        enemyCode = "zombie_woman";
     }
 	
 	// Update is called once per frame
 	public override void Update () {
         base.Update();
+        spanTimer += Time.deltaTime;
         //距離によって透明度を変更する
         Color distanceColor = new Color
             (1, 1, 1, 4.0f / distance);
@@ -24,6 +27,13 @@ public class IllustZombieWomanController : EnemyScript {
     public override void Attack()
     {
         base.Attack();
+
+        if (spanTimer > 1.5f)//1秒毎におたけびを上げ、間隔をリセット
+        {
+            howl(enemyCode);
+            spanTimer = 0;
+        }
+
         //distanceが30以下10以上の場合Playerの方向に向く
         if (distance <= 30 && distance > 10)
         {

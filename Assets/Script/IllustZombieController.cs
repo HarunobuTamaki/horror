@@ -12,7 +12,7 @@ public class IllustZombieController : EnemyScript {
 	// Use this for initialization
 	public override void Start () {
         base.Start();
-        typeCode = 0;
+        enemyCode = "zombie_man";
 	}
 
     // Update is called once per frame
@@ -45,6 +45,7 @@ public class IllustZombieController : EnemyScript {
             //2秒間隔で弾を生成する
             if (spanTimer > 2.0f)
             {
+                howl(enemyCode);//おたけび再生
                 Instantiate(enemyBullet, muzzle.transform.position, transform.rotation);
                 spanTimer = 0;
             }
