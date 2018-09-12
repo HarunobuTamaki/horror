@@ -6,8 +6,11 @@ public class BulletScript : MonoBehaviour {
     
     public static int bulletNumMax = 6; //弾数の最大数
 
+    SoundController sound;//音声コントローラ
+
 	// Use this for initialization
 	void Start () {
+        sound = GameObject.Find("Player").GetComponent<SoundController>();
         //5秒経過したら消滅する
         Destroy(gameObject, 5.0f);
         
@@ -24,8 +27,10 @@ public class BulletScript : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag =="Stage" || collision.gameObject.tag =="Enemy")
+        //背景・敵・敵の弾に触れた場合、音を鳴らしてから消滅
+        if(collision.gameObject.tag =="Stage" || collision.gameObject.tag =="Enemy" || collision.gameObject.tag == "EnemyBullet")
         {
+            sound.PlaySE(transform.position, "hitEnemy");
             Destroy(gameObject);
         }
     }

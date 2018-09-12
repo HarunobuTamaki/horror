@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour {
         isInvincible = false;
         //音声コントローラを取得
         sound = GetComponent<SoundController>();
-        sound.PlayBGM("title");
+        sound.PlayBGM("stage");
     }
 	
 	// Update is called once per frame

@@ -19,8 +19,8 @@ public abstract class EnemyBulletScript : MonoBehaviour {
 
     public virtual void OnCollisionEnter(Collision collision)
     {
-        //StageタグかPlayerタグオブジェクトに触れると消滅
-        if (collision.gameObject.tag == "Stage" || collision.gameObject.tag == "Player")
+        //Stageタグ、Playerタグオブジェクト、Playerの弾に触れると消滅
+        if (collision.gameObject.tag == "Stage" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Bullet")
         {
             Destroy(gameObject);
         }
