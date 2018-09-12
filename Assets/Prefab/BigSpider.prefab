@@ -515,7 +515,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4363416740625232}
-  - component: {fileID: 111180105060762050}
+  - component: {fileID: 95535444743138928}
   - component: {fileID: 54664530028966126}
   - component: {fileID: 65533863820941992}
   - component: {fileID: 114800312021755016}
@@ -2189,33 +2189,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!111 &111180105060762050
-Animation:
+--- !u!95 &95535444743138928
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1441184709793292}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
-  m_Animations:
-  - {fileID: 7400000, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
-  - {fileID: 7400002, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
-  - {fileID: 7400004, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
-  - {fileID: 7400006, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
-  - {fileID: 7400008, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
-  - {fileID: 7400010, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
-  - {fileID: 7400014, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
-  - {fileID: 7400012, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
-  - {fileID: 7400016, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
-  - {fileID: 7400018, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
-  - {fileID: 7400020, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
-  - {fileID: 7400022, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
-  - {fileID: 7400024, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 1
+  m_Avatar: {fileID: 9000000, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
+  m_Controller: {fileID: 9100000, guid: b62e4f630b5584c44b159eb7b6c35e54, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114124151021110534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2227,10 +2217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072f742843ecdb8448fa6680cb62d3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHp: 0
   enemyHpMax: 50
   damage: 10
   distance: 0
+  enemyCode: zombie_man
   target: {fileID: 0}
   Vaccine: {fileID: 1195130897308704, guid: be64949b597d25448925e6979e468088, type: 2}
   spiderBullet: {fileID: 1440623128630592, guid: 1891c60478929bb4fb257165df2bf772,
