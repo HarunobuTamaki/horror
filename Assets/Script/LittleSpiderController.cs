@@ -7,7 +7,7 @@ public class LittleSpiderController : EnemyScript {
     public GameObject spiderBullet;
     float spanTimer = 0;
 
-	       // Use this for initialization
+	     // Use this for initialization
 	public override void  Start () {
         base.Start();
         typeCode = 2;
