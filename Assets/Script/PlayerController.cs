@@ -73,11 +73,11 @@ public class PlayerController : MonoBehaviour {
                 (1, 0, 0, Mathf.PingPong(Time.time,1.0f));
             //リロード中ゲージを伸ばす
             reloadGauge.transform.localScale = new Vector3
-                (reloadTimer / 4.0f, 1, 1);
+                (reloadTimer / 2.0f, 1, 1);
             reloadTimer += Time.deltaTime;
 
-            //4秒経つとリロード終了
-            if (reloadTimer > 4.0f)
+            //2秒経つとリロード終了
+            if (reloadTimer > 2.0f)
             {
                 bulletNum = bulletNumMax;
                 reloadTimer = 0;

@@ -28,7 +28,7 @@ public class IllustZombieWomanController : EnemyScript {
     {
         base.Attack();
 
-        if (spanTimer > 0.5f)//0.5秒毎におたけびを上げ、間隔をリセット
+        if (spanTimer > 1.5f)//1秒毎におたけびを上げ、間隔をリセット
         {
             howl(enemyCode);
             spanTimer = 0;
