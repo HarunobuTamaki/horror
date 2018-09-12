@@ -289,6 +289,36 @@ Prefab:
       propertyPath: compassImage
       value: 
       objectReference: {fileID: 569664827}
+    - target: {fileID: 114249467654298552, guid: 8afa493704661f74c906964793f33277,
+        type: 2}
+      propertyPath: Sounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: ed335cd3c59c62b4891be8f51a2ac7e6, type: 3}
+    - target: {fileID: 114249467654298552, guid: 8afa493704661f74c906964793f33277,
+        type: 2}
+      propertyPath: Sounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8935c7e0a45073c41bae7766b46a31d0, type: 3}
+    - target: {fileID: 114249467654298552, guid: 8afa493704661f74c906964793f33277,
+        type: 2}
+      propertyPath: Sounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a88517d121bd094c8b46fce3cb232eb, type: 3}
+    - target: {fileID: 114249467654298552, guid: 8afa493704661f74c906964793f33277,
+        type: 2}
+      propertyPath: Sounds.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 62fe1ae146558475b8a6c0deffb83970, type: 3}
+    - target: {fileID: 114249467654298552, guid: 8afa493704661f74c906964793f33277,
+        type: 2}
+      propertyPath: Sounds.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: ce130644b119842688ff9c4d27a00507, type: 3}
+    - target: {fileID: 114249467654298552, guid: 8afa493704661f74c906964793f33277,
+        type: 2}
+      propertyPath: Sounds.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: f0071ca6511e8f54eae2f01301cbbc0c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8afa493704661f74c906964793f33277, type: 2}
   m_IsPrefabParent: 0
