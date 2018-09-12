@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Musics:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 4f636f4fc34d2c948958b917bb074363, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

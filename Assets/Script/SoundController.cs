@@ -38,6 +38,7 @@ public class SoundController : MonoBehaviour {
     {
         //AudioSource格納用変数にMainCameraが持つAudioSourceを取得
         BGMChannel = GameObject.Find("MainCamera").GetComponent<AudioSource>();
+        Debug.Log(BGMChannel);
 	}
 	
 	// Update is called once per frame
@@ -49,7 +50,7 @@ public class SoundController : MonoBehaviour {
     //BGM再生(MainCameraが持つAudioSourceから第2引数のBGMを再生)
     public void PlayBGM(string index)
     {
-        int code = (int)Enum.Parse(typeof(SEList), index);
+        int code = (int)Enum.Parse(typeof(BGMList), index);
         BGMChannel.clip = Musics[code];
         BGMChannel.Play();
     }
