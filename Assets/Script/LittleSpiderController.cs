@@ -7,10 +7,15 @@ public class LittleSpiderController : EnemyScript {
     public GameObject spiderBullet;
     float spanTimer = 0;
 
+    Animator anim;
+
 	     // Use this for initialization
 	public override void  Start () {
         base.Start();
+        //enemyCode設定
         enemyCode = "littleSpider";
+        //自身のanimatorを取得
+        anim = GetComponent<Animator>(); 
     }
 	
 	// Update is called once per frame
@@ -24,7 +29,10 @@ public class LittleSpiderController : EnemyScript {
             //2.5秒間隔で射撃
             if (spanTimer > 2.5f)
             {
-                howl(enemyCode);//おたけび再生
+                //攻撃モーション再生
+                anim.SetTrigger("Attack");
+                //おたけび再生
+                howl(enemyCode);
                 Instantiate(spiderBullet, transform.position, transform.rotation);
                 spanTimer = 0;
             }
