@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //マウス左クリックで射撃
-        if (Input.GetMouseButtonDown(0) && bulletNum>0)
+        if (Input.GetMouseButtonDown(0) && bulletNum>0 && !Pause.isPause)
         {
             sound.PlaySE(transform.position, "fire");
             Instantiate(bullet, muzzle.transform.position, muzzle.transform.rotation);
