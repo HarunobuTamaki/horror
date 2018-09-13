@@ -9,8 +9,8 @@ public class PauseButton : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        optionPanel = GameObject.Find("OptionPanel");
         pausePanel = GameObject.Find("PausePanel");
+        optionPanel = GameObject.Find("OptionPanel");
 	}
 	
 	// Update is called once per frame

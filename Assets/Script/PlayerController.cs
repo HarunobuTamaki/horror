@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.ImageEffects;
 
 public class PlayerController : MonoBehaviour {
 
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour {
         //音声コントローラを取得
         sound = GetComponent<SoundController>();
         sound.PlayBGM("stage");
+        
     }
 	
 	// Update is called once per frame
@@ -100,6 +102,7 @@ public class PlayerController : MonoBehaviour {
         }
         
         bulletNum = Mathf.Clamp(bulletNum, 0, bulletNumMax);
+        Camera.main.GetComponent<NoiseAndGrain>().enabled = true;
 
         //テキスト表示
         hpText.GetComponent<Text>().text =
@@ -108,9 +111,9 @@ public class PlayerController : MonoBehaviour {
             string.Format("{0}/{1}", bulletNum, bulletNumMax);
         virusText.GetComponent<Text>().text =
             string.Format("{0}%",virusPercentage);
+        
 
 
-      
     }
 
     //無敵時間中の処理
@@ -139,6 +142,7 @@ public class PlayerController : MonoBehaviour {
         //ループ処理を抜けて色を元通りにする
         playerImg.color =Color.white;
         isInvincible = false;
+        
     }
     
     private void OnCollisionEnter(Collision collision)
