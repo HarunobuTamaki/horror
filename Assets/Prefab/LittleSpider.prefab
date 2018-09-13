@@ -2233,11 +2233,16 @@ MonoBehaviour:
   enemyHpMax: 50
   damage: 10
   distance: 0
+  deathDelay: 0
   enemyCode: zombie_man
+  isDead: 0
   target: {fileID: 0}
   Vaccine: {fileID: 1195130897308704, guid: be64949b597d25448925e6979e468088, type: 2}
   spiderBullet: {fileID: 1440623128630592, guid: 1891c60478929bb4fb257165df2bf772,
     type: 2}
+  MuzzlePrefub: {fileID: 1946284222585880, guid: 0b3fd0596482e6b4197e0be9d0e68028,
+    type: 2}
+  MuzzleMarginY: 0.3
 --- !u!137 &137814657399733492
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

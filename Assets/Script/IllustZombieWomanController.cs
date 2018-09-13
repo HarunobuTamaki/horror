@@ -41,7 +41,7 @@ public class IllustZombieWomanController : EnemyScript {
         //distanceが30以下10以上の場合Playerの方向に向く
         if (distance <= 30 && distance > 10)
         {
-            transform.LookAt(target.transform);
+            LookAt2D();
         }
         //distanceが20以下1以上の場合向いている方向に進む
         if (distance <= 20 && distance >= 1)

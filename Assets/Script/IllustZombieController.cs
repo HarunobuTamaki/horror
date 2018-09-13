@@ -38,7 +38,7 @@ public class IllustZombieController : EnemyScript {
         if (distance <= 30 && distance >= 5)
         {
             //Playerの位置に向く
-            transform.LookAt(target.transform);
+            LookAt2D();
             //向いた方向に進んでいく
             transform.position += transform.forward * Time.deltaTime * 2f;
 

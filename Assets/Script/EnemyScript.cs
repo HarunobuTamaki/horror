@@ -59,6 +59,14 @@ public abstract class EnemyScript : MonoBehaviour {
         }
     }
 
+    public void LookAt2D()//targetに向かったY軸回転だけを行うメソッド
+    {
+        //「相手と同じ位置と奥行き」、「自分と同じ高さ」の座標を取得
+        Vector3 targetPos2D = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+        //↑に向かってLookAt
+        transform.LookAt(targetPos2D);
+    }
+
     public void Damage(int damage)//被ダメージ時の処理
     {
         //引数で渡された分のダメージをHpから引く
