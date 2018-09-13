@@ -20,7 +20,8 @@ public abstract class EnemyScript : MonoBehaviour {
 
     protected enum EnemyType { zombie_man, zombie_woman, littleSpider, bigSpider};//敵キャラの種別
 
-    protected AudioSource audioSource;//自身のAudioSource
+    protected AudioSource selfAudioSource;//自身のAudioSource
+    protected AudioSource playerAudioSource;//プレイヤーのAudioSource
     protected SoundController sound;//音声コントローラ
 
 	// Use this for initialization
@@ -30,9 +31,11 @@ public abstract class EnemyScript : MonoBehaviour {
         //PlayerTargetオブジェクトを指定する
         target = GameObject.Find("PlayerTarget");
         //自身のAudioSourceを取得
-        audioSource = GetComponent<AudioSource>();
+        selfAudioSource = GetComponent<AudioSource>();
         //音声コントローラを指定する
-        sound = GameObject.Find("Player").GetComponent<SoundController>();
+        GameObject player = GameObject.Find("Player");
+        playerAudioSource = player.GetComponent<AudioSource>();
+        sound = player.GetComponent<SoundController>();
 	}
 	
 	// Update is called once per frame
@@ -56,7 +59,7 @@ public abstract class EnemyScript : MonoBehaviour {
             //弾に当たった場合ダメージをくらう
             if (collision.gameObject.tag == "Bullet")
             {
-                sound.PlaySE(transform.position, "hitEnemy");
+                sound.PlaySE(playerAudioSource, "hitEnemy");
                 Damage(damage);
             }
         }
@@ -92,21 +95,21 @@ public abstract class EnemyScript : MonoBehaviour {
         {
             //男ゾンビ攻撃時
             case 0:
-                sound.PlaySE(audioSource, "attackZombie_man");
+                sound.PlaySE(selfAudioSource, "attackZombie_man");
                 break;
             //女ゾンビ攻撃時
             case 1:
-                sound.PlaySE(audioSource, "attackZombie_woman");
+                sound.PlaySE(selfAudioSource, "attackZombie_woman");
                 break;
 
             //小グモ攻撃時
             case 2:
-                sound.PlaySE(audioSource, "attackLittleSpider");
+                sound.PlaySE(selfAudioSource, "attackLittleSpider");
                 break;
 
             //大グモ攻撃時
             case 3:
-                sound.PlaySE(audioSource, "attackBigSpider");
+                sound.PlaySE(selfAudioSource, "attackBigSpider");
                 break;
         }
     }
@@ -120,7 +123,7 @@ public abstract class EnemyScript : MonoBehaviour {
         {
             //男ゾンビ死亡時
             case 0:
-                sound.PlaySE(audioSource,"dieingZombie");
+                sound.PlaySE(selfAudioSource,"dieingZombie");
                 break;
             //女ゾンビ死亡時
             case 1:
@@ -128,12 +131,12 @@ public abstract class EnemyScript : MonoBehaviour {
 
             //小グモ死亡時
             case 2:
-                sound.PlaySE(audioSource, "dieingLittleSpider");
+                sound.PlaySE(selfAudioSource, "dieingLittleSpider");
                 break;
 
             //大グモ死亡時
             case 3:
-                sound.PlaySE(audioSource, "dieingBigSpider");
+                sound.PlaySE(selfAudioSource, "dieingBigSpider");
                 break;
         }
 
