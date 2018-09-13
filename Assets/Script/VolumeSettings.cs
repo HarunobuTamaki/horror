@@ -20,6 +20,7 @@ public class VolumeSettings : MonoBehaviour {
     public void ChangeMusicVolume(float vol)
     {
         mixer.SetFloat("MusicVolume", vol);
+        Debug.Log(vol);
     }
 
     public void ChangeSFXVolume(float vol)
