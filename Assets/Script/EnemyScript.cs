@@ -20,6 +20,7 @@ public abstract class EnemyScript : MonoBehaviour {
 
     protected enum EnemyType { zombie_man, zombie_woman, littleSpider, bigSpider};//敵キャラの種別
 
+    protected AudioSource audioSource;//自身のAudioSource
     protected SoundController sound;//音声コントローラ
 
 	// Use this for initialization
@@ -28,6 +29,8 @@ public abstract class EnemyScript : MonoBehaviour {
         enemyHp = enemyHpMax;
         //PlayerTargetオブジェクトを指定する
         target = GameObject.Find("PlayerTarget");
+        //自身のAudioSourceを取得
+        audioSource = GetComponent<AudioSource>();
         //音声コントローラを指定する
         sound = GameObject.Find("Player").GetComponent<SoundController>();
 	}
@@ -89,21 +92,21 @@ public abstract class EnemyScript : MonoBehaviour {
         {
             //男ゾンビ攻撃時
             case 0:
-                sound.PlaySE(transform.position, "attackZombie_man");
+                sound.PlaySE(audioSource, "attackZombie_man");
                 break;
             //女ゾンビ攻撃時
             case 1:
-                sound.PlaySE(transform.position, "attackZombie_woman");
+                sound.PlaySE(audioSource, "attackZombie_woman");
                 break;
 
             //小グモ攻撃時
             case 2:
-                sound.PlaySE(transform.position, "attackLittleSpider");
+                sound.PlaySE(audioSource, "attackLittleSpider");
                 break;
 
             //大グモ攻撃時
             case 3:
-                sound.PlaySE(transform.position, "attackBigSpider");
+                sound.PlaySE(audioSource, "attackBigSpider");
                 break;
         }
     }
@@ -117,7 +120,7 @@ public abstract class EnemyScript : MonoBehaviour {
         {
             //男ゾンビ死亡時
             case 0:
-                sound.PlaySE(transform.position,"dieingZombie");
+                sound.PlaySE(audioSource,"dieingZombie");
                 break;
             //女ゾンビ死亡時
             case 1:
@@ -125,12 +128,12 @@ public abstract class EnemyScript : MonoBehaviour {
 
             //小グモ死亡時
             case 2:
-                sound.PlaySE(transform.position, "dieingLittleSpider");
+                sound.PlaySE(audioSource, "dieingLittleSpider");
                 break;
 
             //大グモ死亡時
             case 3:
-                sound.PlaySE(transform.position, "dieingBigSpider");
+                sound.PlaySE(audioSource, "dieingBigSpider");
                 break;
         }
 

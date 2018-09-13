@@ -30,7 +30,17 @@ public class BulletScript : MonoBehaviour {
         //背景・敵・敵の弾に触れた場合、音を鳴らしてから消滅
         if(collision.gameObject.tag =="Stage" || collision.gameObject.tag =="Enemy" || collision.gameObject.tag == "EnemyBullet")
         {
-            sound.PlaySE(transform.position, "counter");
+            switch (collision.gameObject.tag)
+            {
+                case "EnemyBullet":
+                    sound.PlaySE(transform.position, "counter");
+                    break;
+
+                case "Enemy":
+                    sound.PlaySE(transform.position, "hitEnemy");
+                    break;
+            }
+            
             Destroy(gameObject);
         }
     }

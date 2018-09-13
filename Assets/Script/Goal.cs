@@ -27,8 +27,6 @@ public class Goal : CheckPointTrigger {
     protected override void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
-            isGoal = true;
-            
-        
+            isGoal = true;     
     }
 }

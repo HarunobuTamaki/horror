@@ -109,7 +109,8 @@ AudioSource:
   m_GameObject: {fileID: 1684753867950434}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243790539195153038, guid: e2613e080f5cdc14f92e8a76e095d141,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 8b3a1a7baf89e4aa7ab0c775f81dc00b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -208,6 +209,9 @@ MonoBehaviour:
   enemyHpMax: 30
   damage: 10
   distance: 0
+  deathDelay: 0
+  enemyCode: zombie_man
+  isDead: 0
   target: {fileID: 0}
   Vaccine: {fileID: 1195130897308704, guid: be64949b597d25448925e6979e468088, type: 2}
   distanceAlpha: 2
