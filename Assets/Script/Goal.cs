@@ -10,6 +10,7 @@ public class Goal : CheckPointTrigger {
 	protected override void Start () {
 
         base.Start();
+        gameObject.SetActive(false);
         isGoal = false;
 	}
 	
