@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour {
     public Text bulletText; //残り銃弾数
     public Text virusText; //ウイルス度テキスト
 
+    AudioSource audioSource;//SE再生用AudioSource
     SoundController sound;//音声コントローラ
 
     // Use this for initialization
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviour {
         reloadGauge.enabled = false;
         reloadText.enabled = false;
         isInvincible = false;
+        //AudioSourceの取得
+        audioSource = GetComponent<AudioSource>();
         //音声コントローラを取得
         sound = GetComponent<SoundController>();
         sound.PlayBGM("stage");
@@ -53,7 +56,7 @@ public class PlayerController : MonoBehaviour {
         //マウス左クリックで射撃
         if (Input.GetMouseButtonDown(0) && bulletNum>0 && !Pause.isPause)
         {
-            sound.PlaySE(transform.position, "fire");
+            sound.PlaySE(audioSource, "fire");
             Instantiate(bullet, muzzle.transform.position, muzzle.transform.rotation);
             bulletNum--;
 
@@ -69,7 +72,7 @@ public class PlayerController : MonoBehaviour {
             //リロード開始時に一度だけリロード音再生
             if (!reloadText.enabled)
             {
-                sound.PlaySE(transform.position, "reload");
+                sound.PlaySE(audioSource, "reload");
             }
             //ゲージとテキストを表示
             reloadGauge.enabled= true;
@@ -86,7 +89,7 @@ public class PlayerController : MonoBehaviour {
             if (reloadTimer > 2.0f)
             {
                 //リロード完了音再生
-                sound.PlaySE(transform.position, "reloadOver");
+                sound.PlaySE(audioSource, "reloadOver");
                 //リロード処理
                 bulletNum = bulletNumMax;
                 reloadTimer = 0;
@@ -145,7 +148,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                sound.PlaySE(transform.position,"die");
+                sound.PlaySE(audioSource, "die");
                 playerHp -= damage;
                 playerHp = Mathf.Clamp(playerHp, 0, playerHpMax);
                 virusPercentage += 2;
@@ -155,7 +158,7 @@ public class PlayerController : MonoBehaviour {
 
             if (collision.gameObject.tag == "EnemyBullet" || collision.gameObject.tag == "SpiderBullet")
             {
-                sound.PlaySE(transform.position, "die");
+                sound.PlaySE(audioSource, "die");
                 playerHp -= damage;
                 playerHp = Mathf.Clamp(playerHp, 0, playerHpMax);
                 virusPercentage += 5;
@@ -178,7 +181,7 @@ public class PlayerController : MonoBehaviour {
             virusPercentage -= 10;
             playerHp = Mathf.Clamp(playerHp, 0, playerHpMax);
             virusPercentage = Mathf.Clamp(virusPercentage, 0, 100);
-            sound.PlaySE(transform.position, "getItem");
+            sound.PlaySE(audioSource, "getItem");
         }
     }
 }

@@ -9,7 +9,7 @@ public class LittleSpiderController : EnemyScript
     public GameObject MuzzlePrefub;//弾発射の基点になる子オブジェクト
 
     GameObject Muzzle;//prefubから生成した子オブジェクトの情報
-    SpiderMuzzleController ctr;//子オブジェクトから取得したコントローラ
+    EnemyMuzzleController ctr;//子オブジェクトから取得したコントローラ
     public float MuzzleMarginY;//子オブジェクト生成時のY軸方向マージン
         
     float spanTimer = 0;
@@ -29,7 +29,7 @@ public class LittleSpiderController : EnemyScript
         Vector3 margin = new Vector3(0,MuzzleMarginY,0);
         Muzzle = Instantiate(MuzzlePrefub, transform.position + margin, transform.rotation);
         Muzzle.transform.parent = transform;
-        ctr = Muzzle.GetComponent<SpiderMuzzleController>();
+        ctr = Muzzle.GetComponent<EnemyMuzzleController>();
     }
 
     // Update is called once per frame

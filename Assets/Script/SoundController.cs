@@ -68,6 +68,12 @@ public class SoundController : MonoBehaviour {
     }
 
     //SE再生(第1引数の座標に第2引数の音を鳴らすオブジェクトを生成)
+    public void PlaySE(AudioSource source, string index)
+    {
+        int code = (int)Enum.Parse(typeof(SEList),index);
+        source.clip = Sounds[code];
+        source.Play();
+    }
     public void PlaySE(Vector3 pos, string index)
     {
         int code = (int)Enum.Parse(typeof(SEList),index);

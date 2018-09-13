@@ -51,6 +51,8 @@ public class GameDirector : MonoBehaviour {
                 {
                     battleStatus = gameState.GAME_END;
                     clearText.enabled = true;
+                    //BGM変更
+                    GameObject.Find("Player").GetComponent<SoundController>().PlayBGM("clear");
                 }
                 //体力が0かウイルス度100%になった場合ゲームオーバー
                 if (PlayerController.playerHp <= 0 || PlayerController.virusPercentage >= 100)
