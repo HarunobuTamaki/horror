@@ -31,13 +31,7 @@ public class IllustZombieWomanController : EnemyScript {
     public override void Attack()
     {
         base.Attack();
-
-        if (spanTimer > 1.5f)//1秒毎におたけびを上げ、間隔をリセット
-        {
-            howl(enemyCode);
-            spanTimer = 0;
-        }
-
+        
         //distanceが30以下10以上の場合Playerの方向に向く
         if (distance <= 30 && distance > 10)
         {
@@ -47,6 +41,11 @@ public class IllustZombieWomanController : EnemyScript {
         if (distance <= 20 && distance >= 1)
         {
             transform.position += transform.forward * Time.deltaTime * 10;
+            if (spanTimer > 1.5f)//1秒毎におたけびを上げ、間隔をリセット
+            {
+                howl(enemyCode);
+                spanTimer = 0;
+            }
         }
     }
 

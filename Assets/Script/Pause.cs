@@ -7,17 +7,19 @@ public class Pause : MonoBehaviour {
     public static bool isPause;
     public GameObject optionPanel;
     public GameObject pausePanel;
+    public GameObject endPanel;
 
     // Use this for initialization
     void Start () {
         isPause = false;
         optionPanel.SetActive(false);
         pausePanel.SetActive(false);
+        endPanel.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+        //Escapeキーでポーズ処理
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 
@@ -50,9 +52,15 @@ public class Pause : MonoBehaviour {
         Debug.Log("ポーズじゃない");
         Cursor.visible = false;
         pausePanel.SetActive(false);
+        //OptionPnaelが表示されていたら非表示にする
         if (optionPanel.activeSelf)
         {
             optionPanel.SetActive(false);
+        }
+        //EndPanelが表示されていたら非表示にする
+        if (endPanel.activeSelf)
+        {
+            endPanel.SetActive(false);
         }
     }
     

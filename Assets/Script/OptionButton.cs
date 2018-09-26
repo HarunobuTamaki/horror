@@ -17,6 +17,7 @@ public class OptionButton : MonoBehaviour {
 	void Update () {
 	}
 
+    //BackボタンでOptionPanelを非表示にする
     public void OnClickOptionInactive()
     {
         pausePanel.SetActive(true);

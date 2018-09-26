@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class VolumeSettings : MonoBehaviour {
 
@@ -14,12 +15,12 @@ public class VolumeSettings : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+    }
 
     public void ChangeMusicVolume(float vol)
     {
-        mixer.SetFloat("MusicVolume", vol);
+        mixer.SetFloat("MusicVolume", vol); 
         Debug.Log(vol);
     }
 

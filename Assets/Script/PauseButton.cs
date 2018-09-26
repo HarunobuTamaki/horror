@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PauseButton : MonoBehaviour {
 
-    GameObject optionPanel;
-    GameObject pausePanel;
+    GameObject optionPanel; //Optionパネル
+    GameObject pausePanel; //Pauseパネル
+    GameObject endPanel; //endパネル
 
 	// Use this for initialization
 	void Start () {
         pausePanel = GameObject.Find("PausePanel");
         optionPanel = GameObject.Find("OptionPanel");
+        endPanel = GameObject.Find("EndPanel");
 	}
 	
 	// Update is called once per frame
@@ -25,6 +27,14 @@ public class PauseButton : MonoBehaviour {
         pausePanel.SetActive(false);
     }
 
+    //BacktoDeskTopButtonを押すとゲーム終了パネルを開く
+    public void OnClickBackToDeskTop()
+    {
+        endPanel.SetActive(true);
+        pausePanel.SetActive(false);
+    }
+    
+
     //Backボタンを押すとポーズ中断処理
     public void OnClickBackButton()
     {
@@ -33,5 +43,12 @@ public class PauseButton : MonoBehaviour {
         Debug.Log("ポーズじゃない");
         Cursor.visible = false;
         pausePanel.SetActive(false);
+    }
+
+    //EndPanelで「いいえ」を押すとendPanelを閉じる
+    public void NotEndGame()
+    {
+        endPanel.SetActive(false);
+        pausePanel.SetActive(true);
     }
 }

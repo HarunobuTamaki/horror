@@ -9,7 +9,7 @@ public enum BGMList//BGMはこの列挙型で指定する
     stage,              //1：ゲーム画面
     boss,               //2：ボス登場時
     clear,              //3：ゲームクリア時
-    gameover,           //4：ゲームオーバー時
+    //gameover,           //4：ゲームオーバー時
 }
 
 public enum SEList//SEはこの列挙型で指定する
@@ -35,10 +35,10 @@ public enum SEList//SEはこの列挙型で指定する
 }
 
 public class SoundController : MonoBehaviour {
-    AudioSource BGMChannel;//BGM再生用AudioSource
-    public AudioClip[] Musics = new AudioClip[5];//BGMの格納用配列
+    public AudioSource BGMChannel;//BGM再生用AudioSource
+    public AudioClip[] Musics = new AudioClip[4];//BGMの格納用配列
     public AudioClip[] Sounds = new AudioClip[16];//SEの格納用配列。使用するSEは全てここに入れる
-
+    
     // Use this for initialization
     void Start ()
     {
@@ -73,6 +73,7 @@ public class SoundController : MonoBehaviour {
         int code = (int)Enum.Parse(typeof(SEList),index);
         source.clip = Sounds[code];
         source.Play();
+        Debug.Log(Sounds[code]);
     }
     public void PlaySE(Vector3 pos, string index)
     {
